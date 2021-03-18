@@ -1,0 +1,126 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Card {
+  id: Int
+  name: String
+  level: Float
+  type: String
+  users: [User!]
+}
+
+type User {
+  id: Int
+  username: String
+  email: String
+  firstName: String
+  lastName: String
+  isActive: Boolean!
+  password: String
+  cards: [Card!]
+}
+
+type Character {
+  id: Int
+  name: String
+  username: String
+  level: Float
+  class: String
+  specialty: String
+  isActive: Boolean
+  password: String
+}
+
+type ContactUs {
+  id: Int
+  fullname: String
+  company: String
+  phone: String
+  email: String
+  message: String
+  receivedAt: String
+  pending: Boolean
+  resolved: Boolean
+  resolvedAt: String
+}
+
+type TechSupport {
+  id: Int
+  representative: String
+  company: String
+  phone: String
+  email: String
+  problemType: String
+  problemContext: String
+  receivedAt: String
+  addressed: Boolean
+  resolved: Boolean
+  resolvedAt: String
+}
+
+type Property {
+  id: Int
+  text: String
+}
+
+type Product {
+  id: Int
+  name: String
+  type: String
+  image: String
+  properties: [Property!]
+}
+
+type ProductTypes {
+  id: Int
+  typename: String
+  amount: Float
+}
+
+type Query {
+  user(id: Int!): User!
+  login(password: String!, username: String!): User!
+  findUser_byUsername(username: String!): User!
+  userGetByID_withQueryBuilder(id: Int!): User!
+  userUpdate(id: Int!): User!
+  userAll: [User!]!
+  verifyToken: Boolean!
+  card(id: Int!): Card!
+  cardsOfUser(id: Float!): [Card!]!
+  character(id: Int!): Character!
+  contact_us(id: Int!): ContactUs!
+  sayHello: String!
+  tech_support(id: Int!): TechSupport!
+  product(id: Int!): Product!
+  productAll: [Product!]!
+  productType: [Product!]!
+  productGet(skip: Float!, take: Float!): [Product!]!
+  takeSkip(skip: Float!, take: Float!): [Product!]!
+  productGetWhere(type: String!, skip: Float!, take: Float!): [Product!]!
+  property(id: Int!): Property!
+  getProductTypes: [ProductTypes!]!
+}
+
+type Mutation {
+  userInsert: User!
+  addCardsToUser(id: Int!): User!
+  addCard(type: String!, level: Float!, name: String!): Card!
+  removeAll_contact_us: ContactUs!
+  deleteAll_contact_us: ContactUs!
+  add_contact_us: ContactUs!
+  removeAll_tech_support: TechSupport!
+  deleteAll_tech_support: TechSupport!
+  add_tech_support: TechSupport!
+  removeAll_product: Product!
+  deleteAll_product: Product!
+  add_product2: Product!
+  add_product(properties: [String!]!, image: String!, type: String!, name: String!): Product!
+  deleteProducts: Product!
+  addProperty(text: String!): Property!
+}
+
+type Subscription {
+  commentAdded1: User!
+  propertyAdded: Property!
+}
